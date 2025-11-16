@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giggle Reloaded ($GGRD) — Whitepaper v1.1</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            font-size: 11pt;
+        }
+        
+        .container {
+            max-width: 21cm;
+            margin: 0 auto;
+            padding: 1cm;
+        }
+        
+        /* Cover Page */
+        .cover {
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            border: 3px solid #9DFF00;
+            padding: 3cm;
+        }
+        
+        .cover h1 {
+            font-size: 48pt;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 0.5cm;
+            letter-spacing: -0.02em;
+        }
+        
+        .cover .ticker {
+            font-size: 36pt;
+            font-weight: 700;
+            color: #9DFF00;
+            margin-bottom: 1cm;
+        }
+        
+        .cover .tagline {
+            font-size: 18pt;
+            color: #666666;
+            margin-bottom: 2cm;
+            font-weight: 600;
+        }
+        
+        .cover .meta {
+            font-size: 12pt;
+            color: #666666;
+            margin-top: 2cm;
+        }
+        
+        .cover .meta p {
+            margin: 0.3cm 0;
+        }
+        
+        /* Headers */
+        h1 {
+            font-size: 24pt;
+            font-weight: 800;
+            color: #000000;
+            margin: 1.5cm 0 0.5cm 0;
+            page-break-after: avoid;
+        }
+        
+        h2 {
+            font-size: 18pt;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 1cm 0 0.4cm 0;
+            page-break-after: avoid;
+            border-bottom: 2px solid #9DFF00;
+            padding-bottom: 0.2cm;
+        }
+        
+        h3 {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0.8cm 0 0.3cm 0;
+            page-break-after: avoid;
+        }
+        
+        h4 {
+            font-size: 12pt;
+            font-weight: 600;
+            color: #333333;
+            margin: 0.5cm 0 0.2cm 0;
+            page-break-after: avoid;
+        }
+        
+        /* Paragraphs */
+        p {
+            margin: 0.3cm 0;
+            text-align: justify;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 0.3cm 0 0.3cm 1cm;
+        }
+        
+        li {
+            margin: 0.2cm 0;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.5cm 0;
+            page-break-inside: avoid;
+        }
+        
+        th {
+            background-color: #9DFF00;
+            color: #000000;
+            font-weight: 700;
+            padding: 0.3cm;
+            text-align: left;
+            border: 1px solid #7ACC00;
+        }
+        
+        td {
+            padding: 0.25cm 0.3cm;
+            border: 1px solid #e0e0e0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Code/Monospace */
+        code, .mono {
+            font-family: 'Courier New', monospace;
+            background-color: #f5f5f5;
+            padding: 0.1cm 0.2cm;
+            border-radius: 3px;
+            font-size: 10pt;
+        }
+        
+        /* Blockquotes */
+        blockquote {
+            background-color: #f0fdf4;
+            border-left: 4px solid #9DFF00;
+            padding: 0.4cm 0.6cm;
+            margin: 0.5cm 0;
+            font-style: italic;
+            page-break-inside: avoid;
+        }
+        
+        /* Warning/Alert Boxes */
+        .warning {
+            background-color: #fff7ed;
+            border: 2px solid #FFC83D;
+            padding: 0.4cm 0.6cm;
+            margin: 0.5cm 0;
+            page-break-inside: avoid;
+        }
+        
+        .warning strong {
+            color: #f59e0b;
+        }
+        
+        /* Info Boxes */
+        .info {
+            background-color: #f0f9ff;
+            border: 2px solid #22D3EE;
+            padding: 0.4cm 0.6cm;
+            margin: 0.5cm 0;
+            page-break-inside: avoid;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            page-break-after: always;
+            margin: 1cm 0;
+        }
+        
+        .toc h2 {
+            text-align: center;
+            margin-bottom: 1cm;
+        }
+        
+        .toc ul {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .toc li {
+            margin: 0.3cm 0;
+        }
+        
+        .toc a {
+            text-decoration: none;
+            color: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .toc a:hover {
+            color: #9DFF00;
+        }
+        
+        /* Links */
+        a {
+            color: #22D3EE;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Strong/Bold */
+        strong {
+            font-weight: 700;
+        }
+        
+        /* Page Breaks */
+        .page-break {
+            page-break-after: always;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 2cm;
+            padding-top: 0.5cm;
+            border-top: 1px solid #e0e0e0;
+            font-size: 9pt;
+            color: #666666;
+            text-align: center;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .no-print {
+                display: none;
+            }
+            
+            a {
+                color: #000000;
+                text-decoration: underline;
+            }
+            
+            .cover {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+    <h1>Giggle Reloaded</h1>
+    <div class="ticker">$GGRD</div>
+    <div class="tagline">The Robin Hood of Solana<br>A Fair-Launch Memecoin with Charitable Impact</div>
+    
+    <div style="margin: 2cm 0; padding: 1cm; background: rgba(157, 255, 0, 0.1); border-radius: 10px;">
+        <p style="font-size: 14pt; font-weight: 600; margin-bottom: 0.5cm;">Whitepaper</p>
+        <p style="font-size: 12pt;">Fair Launch • Zero Tax • 10% for Ukrainian War Relief</p>
+        <p style="font-size: 12pt;">1,000,000 Fixed Supply • Meteora DBC • Squads Multisig</p>
+    </div>
+    
+    <div class="meta">
+        <p><strong>Version:</strong> 1.1</p>
+        <p><strong>Date:</strong> November 15, 2025</p>
+        <p><strong>Network:</strong> Solana Mainnet-Beta</p>
+        <p><strong>Website:</strong> https://ggrd.me</p>
+    </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="container toc">
+    <h2>Table of Contents</h2>
+    <ul>
+        <li><a href="#executive-summary"><span>1. Executive Summary</span></a></li>
+        <li><a href="#introduction"><span>2. Introduction</span></a></li>
+        <li><a href="#token-specifications"><span>3. Token Specifications</span></a></li>
+        <li><a href="#tokenomics"><span>4. Tokenomics & Distribution</span></a></li>
+        <li><a href="#launch-mechanism"><span>5. Launch Mechanism — Meteora Dynamic Bonding Curve</span></a></li>
+        <li><a href="#liquidity"><span>6. Liquidity & Trading Post-Migration</span></a></li>
+        <li><a href="#charity"><span>7. Charity Treasury & Donation Policy</span></a></li>
+        <li><a href="#governance"><span>8. Governance, Multisigs & Future DAO</span></a></li>
+        <li><a href="#roadmap"><span>9. Development Roadmap & Milestones</span></a></li>
+        <li><a href="#marketing"><span>10. Marketing, Community & Communication</span></a></li>
+        <li><a href="#security"><span>11. Security & Risk Management</span></a></li>
+        <li><a href="#legal"><span>12. Legal Disclaimers</span></a></li>
+        <li><a href="#contact"><span>13. Contact & Support</span></a></li>
+        <li><a href="#summary"><span>14. Summary</span></a></li>
+    </ul>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+<h1 id="executive-summary">1. Executive Summary</h1>
+
+<p><strong>Giggle Reloaded ($GGRD)</strong> is a fair-launch memecoin on Solana, utilising Meteora's Dynamic Bonding Curve (DBC) mechanism with subsequent migration to DAMM v2 liquidity pools. The project is structurally designed to combine meme-coin dynamics with a transparent, on-chain charity component dedicated to supporting Ukrainian children with cancer and families affected by war.</p>
+
+<h3>Key Parameters</h3>
+
+<ul>
+    <li><strong>Fixed Supply:</strong> 1,000,000 GGRD (1M tokens)</li>
+    <li><strong>Launch Model:</strong> Public sale exclusively through Meteora DBC with USDC as the quote token</li>
+    <li><strong>Market Cap Parameters (DBC design):</strong>
+        <ul>
+            <li>Initial design market cap: <strong>10,000 USDC</strong></li>
+            <li>Migration market cap (design target): <strong>300,000 USDC</strong></li>
+            <li>Technical migration quote threshold: <strong>80,000 USDC</strong></li>
+        </ul>
+    </li>
+    <li><strong>Curve Allocation:</strong> 40% of total supply (400,000 GGRD) allocated to the DBC</li>
+    <li><strong>Treasury Allocation:</strong> 60% of total supply (600,000 GGRD) allocated to multisig-controlled treasuries</li>
+    <li><strong>Charitable Component:</strong> 10% of total supply (100,000 GGRD) reserved in a dedicated Charity Treasury for transparent donations to Ukrainian charities, including the Tabletochki foundation</li>
+    <li><strong>Security Architecture:</strong> 0% tax, no hidden fee-switches, no freeze authority, no presale or VC allocation, and a comprehensive suite of Squads v4 multisigs (3/4 threshold)</li>
+</ul>
+
+<h3>Deployment Status & Addresses</h3>
+
+<div class="warning">
+    <p><strong>⚠️ Important Notice:</strong></p>
+    <p>At the time of publication (November 15, 2025):</p>
+    <ul>
+        <li>The Meteora DBC and LP for GGRD are <strong>not yet deployed</strong>.</li>
+        <li>The GGRD token mint address, on-chain metadata URI, DBC pool address, LP addresses and trading links <strong>do not yet exist in final form</strong>.</li>
+        <li>All addresses will be published <strong>only after deployment</strong> via official channels.</li>
+    </ul>
+</div>
+
+<p>All final addresses will be announced exclusively through:</p>
+<ul>
+    <li>Official website: <strong>https://ggrd.me</strong></li>
+    <li>Official Telegram announcement channel: <strong>https://t.me/GGRDofficial</strong></li>
+    <li>Official Telegram community chat: <strong>https://t.me/GGRDchat</strong></li>
+</ul>
+
+<div class="page-break"></div>
+
+<h1 id="introduction">2. Introduction</h1>
+
+<h2>2.1. Market Context</h2>
+
+<p>The Solana memecoin market is expanding rapidly, but many projects suffer from:</p>
+
+<ul>
+    <li>Lack of transparent, verifiable tokenomics</li>
+    <li>Poorly documented or unsafe liquidity management</li>
+    <li>No real, measurable impact beyond pure speculation</li>
+    <li>Opaque or inconsistent handling of funds earmarked for "charity" or "community"</li>
+</ul>
+
+<p><strong>Giggle Reloaded ($GGRD)</strong> aims to address these issues by:</p>
+
+<ul>
+    <li>Using a fixed-supply token with clearly documented on-chain configuration</li>
+    <li>Launching exclusively via a Dynamic Bonding Curve (DBC) with transparent parameters</li>
+    <li>Allocating a clearly defined 10% of total supply to a dedicated Charity Treasury</li>
+    <li>Managing core fund pools exclusively through verified, public Squads multisigs</li>
+    <li>Providing a roadmap towards community-involved on-chain governance (DAO)</li>
+</ul>
+
+<h2>2.2. Mission & Vision</h2>
+
+<div class="info">
+    <p><strong>Mission:</strong></p>
+    <p>To build a Solana memecoin that combines the entertainment and speculation typical of memes with real, repeatable humanitarian aid and transparent on-chain management of funds.</p>
+</div>
+
+<div class="info">
+    <p><strong>Vision:</strong></p>
+    <p>To become the recognisable "Robin Hood of Solana" — a token associated with:</p>
+    <ul>
+        <li>Fair-launch without presale or VC allocation</li>
+        <li>Healthy, public distribution to the community via a bonding curve</li>
+        <li>Cyclical, transparent donations to Ukrainian children and families affected by war</li>
+        <li>Building trust through complete transparency, multisig control and verifiable reporting</li>
+    </ul>
+</div>
+
+<h2>2.3. Purpose and Core Functions of GGRD</h2>
+
+<p>GGRD is designed to fulfil four core functions:</p>
+
+<ol>
+    <li><strong>Market / Trading Function</strong> — a freely tradable Solana memecoin with no presale, no VC allocation and 0% tax, launched via a Meteora DBC and later traded on a DAMM v2 LP and aggregators such as Jupiter.</li>
+    
+    <li><strong>Charity Value Driver</strong> — 10% of the total supply is allocated to a dedicated Charity Treasury whose sole purpose is to fund verifiable, on-chain crypto donations to Ukrainian children with cancer and families affected by war.</li>
+    
+    <li><strong>Governance Signal (Future DAO)</strong> — in later phases, GGRD (or staked/wrapped GGRD) is expected to act as a governance signal in DAO votes on key parameters such as charity allocations, community incentive programmes and long-term policy changes.</li>
+    
+    <li><strong>Community Incentives & Rewards</strong> — part of the Treasury allocation (community, marketing, partnerships) is intended for quests, airdrops, contests and other mechanisms designed to reward long-term, constructive community participation rather than short-term extraction.</li>
+</ol>
+
+<div class="page-break"></div>
+
+<h1 id="token-specifications">3. Token Specifications</h1>
+
+<h2>Technical Parameters</h2>
+
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>Giggle Reloaded</td>
+    </tr>
+    <tr>
+        <td>Symbol</td>
+        <td>GGRD</td>
+    </tr>
+    <tr>
+        <td>Total Supply</td>
+        <td>1,000,000 GGRD (fixed, no inflation)</td>
+    </tr>
+    <tr>
+        <td>Decimals</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>Network</td>
+        <td>Solana Mainnet-Beta</td>
+    </tr>
+    <tr>
+        <td>Mint Address</td>
+        <td>TBA - Will be announced via official channels after deployment</td>
+    </tr>
+</table>
+
+<h2>Metadata (Metaplex Token Metadata)</h2>
+
+<ul>
+    <li><strong>Standard:</strong> SPL Token + Metaplex Token Metadata</li>
+    <li><strong>Logo:</strong> 512×512 PNG, intended to be hosted on a permanent storage layer (e.g. Irys / Arweave)</li>
+    <li><strong>On-Chain Metadata:</strong> Final on-chain metadata URI and associated media links (logo, JSON metadata) will be announced only via official channels once confirmed on Solana explorers</li>
+</ul>
+
+<h2>Token Authorities</h2>
+
+<p>The design target for the token's authority configuration is as follows:</p>
+
+<ul>
+    <li><strong>Mint Authority:</strong> Revoked after minting the full 1,000,000 GGRD supply (no further minting possible)</li>
+    <li><strong>Freeze Authority:</strong> None (no authority capable of arbitrarily freezing user accounts)</li>
+    <li><strong>Metadata Update Authority:</strong> To be renounced (or set to a non-recoverable state) once final metadata is confirmed to be correct and stable</li>
+</ul>
+
+<div class="warning">
+    <p><strong>Verification Required:</strong> Until official announcements are made and on-chain state is verified, all references to the authority configuration in this document should be treated as design intent rather than a legal guarantee.</p>
+</div>
+
+<div class="page-break"></div>
+
+<h1 id="tokenomics">4. Tokenomics & Distribution</h1>
+
+<h2>4.1. Supply Breakdown</h2>
+
+<p>The total supply of <strong>1,000,000 GGRD</strong> is allocated as follows:</p>
+
+<h3>40% — 400,000 GGRD — Meteora DBC (Public Sale)</h3>
+
+<ul>
+    <li>Sole source of primary token sale</li>
+    <li>No presale, no private sale, no VC allocation</li>
+    <li>Fair-launch via public access to the DBC</li>
+</ul>
+
+<h3>60% — 600,000 GGRD — Treasury Multisig (Secondary Distribution)</h3>
+
+<p>Allocated to specialised, named multisigs:</p>
+
+<table>
+    <tr>
+        <th>Purpose</th>
+        <th>Amount</th>
+        <th>Percentage</th>
+        <th>Multisig Address</th>
+    </tr>
+    <tr>
+        <td><strong>Charity (Ukraine Relief)</strong></td>
+        <td>100,000 GGRD</td>
+        <td>10%</td>
+        <td><code>C96zqEjGh22yuZknVrasLyr2j5b2xsMnbTUiu2WKLK9w</code></td>
+    </tr>
+    <tr>
+        <td><strong>LP Policy (Additional Liquidity)</strong></td>
+        <td>100,000 GGRD</td>
+        <td>10%</td>
+        <td><code>8vFQrPpdE3uyd4JRdE7jUhyzTF8ZBVnuvqFTpsAA4SLY</code></td>
+    </tr>
+    <tr>
+        <td><strong>Community Distribution / Airdrops</strong></td>
+        <td>70,000 GGRD</td>
+        <td>7%</td>
+        <td><code>D3JWCu9egWYHEf1xvxBqSJJ6PBsHU3HkMjJZDW3ZQ37D</code></td>
+    </tr>
+    <tr>
+        <td><strong>Team Vesting</strong></td>
+        <td>70,000 GGRD</td>
+        <td>7%</td>
+        <td><code>7xXhueJp5LTr4jNwcWPn4oFurqJM9W5hxQRRWBCWLnDY</code></td>
+    </tr>
+    <tr>
+        <td><strong>Marketing & Partnerships</strong></td>
+        <td>80,000 GGRD</td>
+        <td>8%</td>
+        <td><code>2RgWCdtsvU4VYcR1nZJS2XN5utBzA88vHbEyHuutHkvG</code></td>
+    </tr>
+    <tr>
+        <td><strong>Treasury Operations / Reserve</strong></td>
+        <td>180,000 GGRD</td>
+        <td>18%</td>
+        <td><code>5UAgVqKBNFoT6WrANGFdjqbTXJRGXPzHcNhG5LK4n9mj</code></td>
+    </tr>
+</table>
+
+<h2>4.2. Multisig Configuration</h2>
+
+<p>All key pools are controlled by <strong>Squads v4 multisigs</strong> with a <strong>3/4 threshold</strong>, meaning at least three independent signers must approve any outbound transaction.</p>
+
+<div class="info">
+    <p><strong>Multisig Summary:</strong></p>
+    <ul>
+        <li><strong>TREASURY:</strong> <code>5UAgVqKBNFoT6WrANGFdjqbTXJRGXPzHcNhG5LK4n9mj</code></li>
+        <li><strong>CHARITY:</strong> <code>C96zqEjGh22yuZknVrasLyr2j5b2xsMnbTUiu2WKLK9w</code></li>
+        <li><strong>LP_POLICY:</strong> <code>8vFQrPpdE3uyd4JRdE7jUhyzTF8ZBVnuvqFTpsAA4SLY</code></li>
+        <li><strong>MARKETING:</strong> <code>2RgWCdtsvU4VYcR1nZJS2XN5utBzA88vHbEyHuutHkvG</code></li>
+        <li><strong>DISTRIBUTION / COMMUNITY:</strong> <code>D3JWCu9egWYHEf1xvxBqSJJ6PBsHU3HkMjJZDW3ZQ37D</code></li>
+        <li><strong>TEAM:</strong> <code>7xXhueJp5LTr4jNwcWPn4oFurqJM9W5hxQRRWBCWLnDY</code></li>
+    </ul>
+</div>
+
+<p>Transfers from the main Treasury multisig to specialised multisigs are planned for the first days after launch and will be executed through on-chain Squads proposals, visible and verifiable by any observer.</p>
+
+<div class="page-break"></div>
+
+<h1 id="launch-mechanism">5. Launch Mechanism — Meteora Dynamic Bonding Curve</h1>
+
+<h2>5.1. DBC Parameters</h2>
+
+<p>GGRD launches on <strong>Meteora Dynamic Bonding Curve (DBC)</strong> with the following key parameters:</p>
+
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>Quote Token</td>
+        <td>USDC (<code>EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v</code>)</td>
+    </tr>
+    <tr>
+        <td>Quote Decimals</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>Curve Allocation</td>
+        <td>400,000 GGRD (40% of total supply)</td>
+    </tr>
+    <tr>
+        <td>Initial Market Cap (design)</td>
+        <td>10,000 USDC</td>
+    </tr>
+    <tr>
+        <td>Migration Market Cap (design target)</td>
+        <td>300,000 USDC</td>
+    </tr>
+    <tr>
+        <td>Migration Quote Threshold (technical)</td>
+        <td>80,000 USDC</td>
+    </tr>
+    <tr>
+        <td>Percentage Supply on Migration</td>
+        <td>40%</td>
+    </tr>
+    <tr>
+        <td>Curve Mode</td>
+        <td>3 (multi-segment community-oriented curve)</td>
+    </tr>
+</table>
+
+<h3>Interpretation</h3>
+
+<ul>
+    <li><strong>10,000 USDC</strong> defines the low-end of the curve (starting design market cap)</li>
+    <li><strong>300,000 USDC</strong> is a design target: it shapes the upper part of the curve and projected market cap for full utilisation, but it is <strong>not</strong> a hard on-chain requirement for migration</li>
+    <li><strong>80,000 USDC</strong> is the <strong>actual technical migration threshold</strong> — once the quote balance on the DBC reaches or exceeds this value, the pool becomes eligible for migration to a Meteora DAMM v2 liquidity pool</li>
+</ul>
+
+<h2>5.2. Fee Structure</h2>
+
+<p>The DBC uses a <strong>time-decaying fee schedule</strong>:</p>
+
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>Starting Fee</td>
+        <td>0.90% (90 bps)</td>
+    </tr>
+    <tr>
+        <td>Ending Fee</td>
+        <td>0.35% (35 bps)</td>
+    </tr>
+    <tr>
+        <td>Number of Periods</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Total Decay Duration</td>
+        <td>36 hours (129,600 seconds)</td>
+    </tr>
+    <tr>
+        <td>Dynamic Fees</td>
+        <td>Disabled</td>
+    </tr>
+    <tr>
+        <td>Migration Fee</td>
+        <td>0% creator fee</td>
+    </tr>
+    <tr>
+        <td>Fee Receiver / Claimer</td>
+        <td>Main Treasury multisig</td>
+    </tr>
+</table>
+
+<h3>Illustrative Fee Schedule (Approximate)</h3>
+
+<table>
+    <tr>
+        <th>Elapsed Time (hours)</th>
+        <th>Approx. Fee</th>
+    </tr>
+    <tr><td>0–3</td><td>0.90%</td></tr>
+    <tr><td>3–6</td><td>0.85%</td></tr>
+    <tr><td>6–9</td><td>0.80%</td></tr>
+    <tr><td>9–12</td><td>0.75%</td></tr>
+    <tr><td>12–15</td><td>0.70%</td></tr>
+    <tr><td>15–18</td><td>0.65%</td></tr>
+    <tr><td>18–21</td><td>0.60%</td></tr>
+    <tr><td>21–24</td><td>0.55%</td></tr>
+    <tr><td>24–27</td><td>0.50%</td></tr>
+    <tr><td>27–30</td><td>0.45%</td></tr>
+    <tr><td>30–33</td><td>0.40%</td></tr>
+    <tr><td>33–36 and later</td><td>0.35%</td></tr>
+</table>
+
+<p>This model provides additional revenue to the Treasury from early, more speculative trading, offers softer conditions for later participants, and is fully predictable (no surprise changes in fees).</p>
+
+<h2>5.3. Migration to Permanent Liquidity (DAMM v2)</h2>
+
+<p>Key migration-related parameters:</p>
+
+<ul>
+    <li><strong>Migration Option:</strong> 1 (migrate to LP / TO_LP-style behaviour)</li>
+    <li><strong>Migration Fee:</strong> 0% (no extra fee charged to the project at migration)</li>
+    <li><strong>Leftover Receiver & Fee Claimer:</strong> Main Treasury multisig</li>
+    <li><strong>Pool Creator Transfer:</strong> After migration, the pool creator is transferred to the LP Policy multisig: <code>8vFQrPpdE3uyd4JRdE7jUhyzTF8ZBVnuvqFTpsAA4SLY</code></li>
+</ul>
+
+<div class="info">
+    <p><strong>Migration Process:</strong></p>
+    <ol>
+        <li>Once the DBC accumulates at least <strong>80,000 USDC</strong> in quote, migration to DAMM v2 can be triggered</li>
+        <li>Unsold tokens and remaining quote are handled according to Meteora's migration logic (with no extra creator fee and with leftovers/fee claims directed to the main Treasury multisig)</li>
+        <li>Immediately after DAMM v2 pool creation, pool creator/authority is transferred to the <strong>LP Policy multisig</strong>, typically within minutes from deployment, minimising any window in which a single wallet controls LP parameters</li>
+    </ol>
+</div>
+
+<div class="page-break"></div>
+
+<h1 id="liquidity">6. Liquidity & Trading Post-Migration</h1>
+
+<p>After migration to <strong>Meteora DAMM v2</strong>:</p>
+
+<ul>
+    <li>GGRD trading occurs on a liquidity pool whose parameters are governed by Meteora and the LP Policy multisig</li>
+    <li>An additional <strong>10% of total supply (100,000 GGRD)</strong> exists in the LP Policy multisig and can be deployed over time to strengthen liquidity, open new pairs, or support listings, subject to transparent policies and market conditions</li>
+    <li>There is <strong>no transaction tax</strong> on GGRD (0% buy/sell tax, no hidden fee-switches, no backdoor for introducing a tax later)</li>
+</ul>
+
+<h2>Security & Transparency Principles</h2>
+
+<ul>
+    <li><strong>No stealth liquidity pulls:</strong> LP tokens and positions will be controlled by the LP Policy multisig and, where possible, guarded by time-locks and clear policies</li>
+    <li><strong>No single-key control:</strong> Major actions require approvals from at least 3 of 4 multisig signers</li>
+    <li><strong>Public policies:</strong> LP management rules (e.g. when to add/remove liquidity, under what conditions) are intended to be published and discussed with the community and, in later stages, submitted to DAO-style governance votes</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h1 id="charity">7. Charity Treasury & Donation Policy</h1>
+
+<h2>7.1. General Assumptions</h2>
+
+<p>The <strong>GGRD Charity Treasury</strong> is a dedicated on-chain wallet holding <strong>10% of total GGRD supply (100,000 GGRD)</strong>, controlled by a 3/4 Squads multisig:</p>
+
+<div class="info">
+    <p><strong>Charity Multisig:</strong> <code>C96zqEjGh22yuZknVrasLyr2j5b2xsMnbTUiu2WKLK9w</code></p>
+</div>
+
+<h3>Primary Beneficiary</h3>
+
+<p><strong>Tabletochki Charity Foundation</strong> — a verified Ukrainian charitable foundation providing comprehensive support to children with cancer and their families, especially those affected by war.</p>
+
+<h3>Exclusive Purpose</h3>
+
+<p>Charity Treasury funds are dedicated to:</p>
+
+<ul>
+    <li>Financing humanitarian aid for children with cancer and families affected by war in Ukraine</li>
+    <li>Providing direct support through transparent crypto donations to Tabletochki</li>
+    <li>Potentially supporting other clearly defined organisations with similar humanitarian profiles (children and war-affected families), subject to clear public disclosure and governance</li>
+</ul>
+
+<h3>Prohibited Uses</h3>
+
+<div class="warning">
+    <p><strong>Charity Treasury funds must NOT be used for:</strong></p>
+    <ul>
+        <li>Team funding or salaries</li>
+        <li>Marketing campaigns</li>
+        <li>Liquidity provision or market-making</li>
+        <li>CEX listing fees</li>
+        <li>Profit-oriented investments</li>
+        <li>Any purpose other than verified charitable donations</li>
+    </ul>
+</div>
+
+<h2>7.2. Permitted Fund Usage</h2>
+
+<p>Charity Treasury funds may <strong>only</strong> be used for:</p>
+
+<ol>
+    <li><strong>On-chain transfers</strong> to official Tabletochki crypto-donation endpoints or other verified payment gateways</li>
+    <li><strong>Technical swaps</strong> of GGRD into assets accepted by Tabletochki (e.g. USDC or other supported cryptocurrencies), executed carefully to limit market impact</li>
+    <li><strong>On-chain transfers</strong> to official wallets of other charitable organisations with similar focus, clearly approved and disclosed to the community</li>
+</ol>
+
+<h2>7.3. Donation Mechanics</h2>
+
+<p>High-level principles:</p>
+
+<ul>
+    <li>Donations are planned to be executed periodically (e.g. monthly or quarterly tranches), typically in USDC or other stable assets accepted by the beneficiary organisation</li>
+    <li>Conversions from GGRD to donation assets are intended to be spread over time (TWAP/DCA-style), with safeguards such as:
+        <ul>
+            <li>A maximum share of average daily trading volume allocated to charity conversions</li>
+            <li>Slippage limits per transaction</li>
+        </ul>
+    </li>
+    <li>A "kill-switch" or pause mechanism may be used to temporarily suspend conversions if market conditions become extremely unfavourable or if price impact exceeds predefined thresholds</li>
+</ul>
+
+<h3>Goals</h3>
+
+<ul>
+    <li>Minimise excessive selling pressure on the GGRD market</li>
+    <li>Avoid sudden, disruptive token "dumps" under the banner of charity</li>
+    <li>Execute donations in a transparent, economically rational manner</li>
+</ul>
+
+<h2>7.4. Transparency & Communication</h2>
+
+<p>Planned transparency tools include:</p>
+
+<ul>
+    <li>A public dashboard (e.g. Dune/Flipside) tracking:
+        <ul>
+            <li>Charity Treasury balances</li>
+            <li>Donation schedules</li>
+            <li>Historical transactions and transaction hashes</li>
+        </ul>
+    </li>
+    <li>Periodic reports summarising executed donations, published on the website and official social channels</li>
+    <li>Open discussion of proposed donations and recipients in the Telegram community, with major decisions submitted to future DAO-style votes</li>
+</ul>
+
+<p>For <strong>questions regarding charity operations</strong>, holders are expected to use the official Telegram community chat: <strong>https://t.me/GGRDchat</strong></p>
+
+<div class="warning">
+    <p><strong>Verification Required:</strong> Official charity-related addresses and links should always be verified directly via:</p>
+    <ul>
+        <li>The official GGRD website (<strong>https://ggrd.me</strong>)</li>
+        <li>The official website / donation pages of the beneficiary organisation</li>
+    </ul>
+</div>
+
+<h2>7.5. Tabletochki Charity Foundation</h2>
+
+<h3>About the Foundation</h3>
+
+<p>Tabletochki is a Ukrainian charitable foundation that has been supporting children with cancer and their families since 2012. Since the start of the war, Tabletochki has expanded its mission to include children and families affected by military actions across Ukraine.</p>
+
+<h3>Key Activities Include:</h3>
+
+<ul>
+    <li>Medical assistance and equipment for paediatric oncology departments</li>
+    <li>Psychological support for children and families</li>
+    <li>Humanitarian aid (food, clothing, shelter) for families affected by war</li>
+    <li>Educational and rehabilitation programmes</li>
+    <li>Transparent reporting of received and distributed funds</li>
+</ul>
+
+<h3>Why Tabletochki?</h3>
+
+<ul>
+    <li>Long, documented track record of transparent fund management</li>
+    <li>Direct, measurable impact on children's lives in Ukraine</li>
+    <li>International recognition and verification</li>
+    <li>Acceptance of cryptocurrency donations through reputable payment partners</li>
+    <li>Regular public reporting and accountability</li>
+</ul>
+
+<h3>Official Links (as of publication)</h3>
+
+<ul>
+    <li><strong>Website:</strong> https://tabletochki.org/</li>
+    <li><strong>Crypto donation page (Whitepay):</strong> https://pay.whitepay.com/crypto-jars/6ff2ec87-058b-43ed-b33b-c036da57da7d</li>
+</ul>
+
+<div class="info">
+    <p><strong>Important:</strong> Holders should always verify current donation options and addresses directly on <strong>https://tabletochki.org/</strong> and through official GGRD communication channels before sending any funds.</p>
+</div>
+
+<div class="page-break"></div>
+
+<h1 id="governance">8. Governance, Multisigs & Future DAO</h1>
+
+<h2>8.1. Current Decision Structure</h2>
+
+<p>At launch, governance is based on a <strong>multisig-first</strong> security model:</p>
+
+<ul>
+    <li>All core fund pools (Treasury, Charity, LP Policy, Marketing, Distribution, Team) are controlled by <strong>Squads v4 multisigs</strong> with a <strong>3/4 threshold</strong></li>
+    <li>Every significant transaction (donation, liquidity change, large transfer) is executed only after:
+        <ul>
+            <li>Creating a proposal in Squads describing the purpose, recipients and amounts</li>
+            <li>Approval by at least 3 of 4 designated signers</li>
+        </ul>
+    </li>
+</ul>
+
+<p>This structure is designed to prevent any single private key from unilaterally draining liquidity or charity funds.</p>
+
+<h2>8.2. Role of Telegram in Governance</h2>
+
+<p>Telegram is used as the primary <strong>consultation and communication</strong> layer:</p>
+
+<ul>
+    <li>The <strong>official announcement channel</strong> (<code>https://t.me/GGRDofficial</code>) is used to publish proposals, results, and key decisions</li>
+    <li>The <strong>official community chat</strong> (<code>https://t.me/GGRDchat</code>) is used to discuss proposals, collect feedback and, where useful, run <strong>non-binding polls</strong> to gauge sentiment</li>
+</ul>
+
+<div class="warning">
+    <p><strong>Note:</strong> Telegram polls and discussions are <strong>not</strong> formal or binding governance mechanisms but serve as an important input into on-chain decision-making.</p>
+</div>
+
+<h2>8.3. On-Chain Governance (Future DAO)</h2>
+
+<p>In later phases, the project aims to introduce a <strong>DAO-style on-chain governance layer</strong>, potentially using Realms or another Solana-native governance framework. The intended model is:</p>
+
+<ul>
+    <li><strong>Telegram:</strong> Place for open discussion, education, and informal polling</li>
+    <li><strong>DAO (on-chain):</strong> Place for formal proposals and binding votes related to protocol-level decisions (e.g. charity allocation rules, community incentive parameters, activation of new programmes). Voting power based on GGRD holdings or staked/wrapped GGRD (final model to be determined)</li>
+    <li><strong>Multisigs (Squads):</strong> Remain the execution layer, responsible for signing and executing transactions that implement decisions approved via DAO, especially in charity and treasury operations</li>
+</ul>
+
+<h3>Hybrid Governance Model</h3>
+
+<ol>
+    <li>Community discusses and signals preferences on Telegram</li>
+    <li>Formal proposals are submitted to the DAO for token-weighted voting</li>
+    <li>If approved, multisigs execute the corresponding on-chain transactions in line with the DAO decision</li>
+</ol>
+
+<div class="info">
+    <p><strong>Important:</strong> Participation in governance does <strong>not</strong> grant any legal ownership or equity in any entity. It is a <strong>protocol-level mechanism</strong> for influencing project direction and treasury usage, not a shareholder structure.</p>
+</div>
+
+<h2>8.4. Planned On-Chain Programmes (Anchor)</h2>
+
+<p>As the project matures, the following on-chain programmes may be implemented using Anchor or similar tooling:</p>
+
+<ul>
+    <li><strong>ggrd_vesting:</strong> On-chain vesting for team and certain allocations (cliff + linear release)</li>
+    <li><strong>ggrd_merkle_distributor:</strong> Efficient distribution of rewards/airdrops based on off-chain leaderboards and on-chain Merkle proofs</li>
+    <li><strong>ggrd_reward_locker:</strong> Locking mechanism with cliff and linear unlock for partner or community allocations</li>
+    <li><strong>ggrd_lp_escrow_timelock:</strong> Timelock for LP positions to further reduce rug-pull risk</li>
+</ul>
+
+<p>Any such programme will be documented separately and, where appropriate, submitted to external audits before handling significant value.</p>
+
+<div class="page-break"></div>
+
+<h1 id="roadmap">9. Development Roadmap & Milestones</h1>
+
+<div class="warning">
+    <p><strong>Disclaimer:</strong> The roadmap below presents <strong>non-binding, indicative targets</strong> rather than promises or guarantees.</p>
+</div>
+
+<h2>9.1. Launch Phase (Day 1–7)</h2>
+
+<h3>Indicative Targets:</h3>
+<ul>
+    <li>500–1,000 holders</li>
+    <li>DBC segments 4–6 completed</li>
+    <li>30,000–50,000 USD cumulative volume</li>
+    <li>1,000+ Telegram community members</li>
+    <li>500+ X (Twitter) followers</li>
+</ul>
+
+<h3>Key Activities:</h3>
+<ul>
+    <li>Deploy GGRD mint, DBC and supporting infrastructure</li>
+    <li>Transfer DBC/DAMM pool creator to LP Policy multisig immediately after creation</li>
+    <li>Publish clear "How to buy GGRD" guides and security reminders</li>
+    <li>Start regular communication on X and Telegram</li>
+</ul>
+
+<h2>9.2. Growth Phase (Week 2–4)</h2>
+
+<h3>Indicative Targets:</h3>
+<ul>
+    <li>2,000+ holders</li>
+    <li>DBC segments 10–12 completed</li>
+    <li>Migration to DAMM v2 completed (post-80k USDC threshold)</li>
+    <li>3,000+ Telegram members</li>
+    <li>2,000+ X followers</li>
+    <li>Listing on Jupiter aggregator</li>
+</ul>
+
+<h3>Key Activities:</h3>
+<ul>
+    <li>Distribute Treasury tokens to specialised multisigs (Charity, LP, Marketing, Community, Team)</li>
+    <li>Finalise charity technical setup with Tabletochki and other partners as needed</li>
+    <li>Begin collaboration with KOLs and communities</li>
+    <li>Launch first meme/engagement campaigns and educational content</li>
+</ul>
+
+<h2>9.3. Expansion Phase (Month 2–3)</h2>
+
+<h3>Indicative Targets:</h3>
+<ul>
+    <li>5,000+ holders</li>
+    <li>Stable post-migration trading conditions</li>
+    <li>First charity donation(s) executed from Charity Treasury</li>
+    <li>Presence in trending sections on analytics platforms (e.g. DEXScreener)</li>
+    <li>10,000+ community members across channels</li>
+</ul>
+
+<h3>Key Activities:</h3>
+<ul>
+    <li>Execute first transparent donation to Tabletochki using on-chain verifiable paths</li>
+    <li>Publish a detailed donation transparency report</li>
+    <li>Launch quests, contests and structured community incentive programmes</li>
+    <li>Deploy early versions of merkle distributor / reward contracts where appropriate</li>
+</ul>
+
+<h2>9.4. Maturity Phase (Month 4–6)</h2>
+
+<h3>Indicative Targets:</h3>
+<ul>
+    <li>10,000+ holders</li>
+    <li>Potential CEX listings</li>
+    <li>DAO governance live for key decisions</li>
+    <li>Fully deployed vesting and LP-security infrastructure</li>
+</ul>
+
+<h3>Key Activities:</h3>
+<ul>
+    <li>Launch DAO governance with clear documentation</li>
+    <li>Run regular charity donation cycles (e.g. monthly or quarterly)</li>
+    <li>Explore cross-chain expansion or additional liquidity venues in a controlled manner</li>
+    <li>Continue refining risk management and transparency tools</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h1 id="marketing">10. Marketing, Community & Communication</h1>
+
+<h2>10.1. Official Channels</h2>
+
+<table>
+    <tr>
+        <th>Channel</th>
+        <th>URL</th>
+    </tr>
+    <tr>
+        <td>Official Website</td>
+        <td>https://ggrd.me</td>
+    </tr>
+    <tr>
+        <td>Official X (Twitter)</td>
+        <td>https://x.com/ContactGiggle</td>
+    </tr>
+    <tr>
+        <td>Telegram Announcement Channel</td>
+        <td>https://t.me/GGRDofficial</td>
+    </tr>
+    <tr>
+        <td>Telegram Community Chat</td>
+        <td>https://t.me/GGRDchat</td>
+    </tr>
+</table>
+
+<div class="warning">
+    <p><strong>Security Notice:</strong> Only channels <strong>explicitly linked</strong> from the official website should be considered official. Any other channel or account claiming to represent GGRD should be treated with caution.</p>
+</div>
+
+<h2>10.2. Communication Rules</h2>
+
+<ul>
+    <li>All critical announcements (launch dates, contract addresses, charity reports, governance proposals) will be published on <strong>https://ggrd.me</strong> and in <strong>@GGRDofficial</strong></li>
+    <li>Community questions, feedback and informal polls are handled in <strong>@GGRDchat</strong></li>
+    <li>The team does <strong>not</strong> provide official project support via email or private DMs. Any unsolicited messages asking for funds, seed phrases, or private keys are scams</li>
+</ul>
+
+<h2>10.3. Branding & Content Strategy</h2>
+
+<p>The project's branding combines a <strong>"Robin Hood" meme aesthetic</strong> with a modern crypto-native visual style:</p>
+
+<ul>
+    <li>Meme-friendly yet professional graphics for social channels</li>
+    <li>Infographics explaining tokenomics, multisig structures and the charity mechanism</li>
+    <li>Regular posts about:
+        <ul>
+            <li>DBC/LP status and milestones</li>
+            <li>Holders / volume stats</li>
+            <li>Executed and planned donations</li>
+            <li>Governance and roadmap updates</li>
+        </ul>
+    </li>
+</ul>
+
+<p>Marketing efforts focus on transparency, education and long-term community building rather than aggressive short-term hype.</p>
+
+<h2>10.4. Community Incentives</h2>
+
+<p>Planned community incentives include:</p>
+
+<ul>
+    <li>Meme contests, quests and referral programmes</li>
+    <li>Reward allocations based on long-term, verifiable engagement and contribution</li>
+    <li>On-chain claim mechanisms (e.g. merkle distributions) to prevent double-claiming and encourage fair distribution</li>
+</ul>
+
+<p>Details will be communicated closer to launch and may be subject to DAO feedback and votes in later phases.</p>
+
+<div class="page-break"></div>
+
+<h1 id="security">11. Security & Risk Management</h1>
+
+<h2>11.1. Security Measures</h2>
+
+<p>Planned and implemented security measures include:</p>
+
+<ul>
+    <li><strong>Immutable Supply Design:</strong> Full 1,000,000 GGRD minted at launch, with intent to revoke mint authority</li>
+    <li><strong>No Freeze Authority:</strong> Token configuration targets no freeze authority over user accounts</li>
+    <li><strong>Zero Tax:</strong> No buy/sell tax, no hidden fee-switch and no backdoor allowing a tax to be introduced later</li>
+    <li><strong>Multisig-Controlled Treasuries:</strong> All critical pools controlled by 3/4 Squads multisigs, not by single EOAs</li>
+    <li><strong>Battle-tested Protocols:</strong> Reliance on established components such as Meteora DBC + DAMM v2, Metaplex Token Metadata and Squads multisigs</li>
+    <li><strong>LP Security:</strong> Post-migration LP controlled by a multisig, with the intention to use time-locks and transparent LP policies</li>
+</ul>
+
+<h2>11.2. Risk Categories</h2>
+
+<h3>Market Risk</h3>
+<ul>
+    <li>High volatility typical of memecoins</li>
+    <li>Possibility of rapid and severe price swings</li>
+    <li>Real risk of losing the entire invested amount</li>
+</ul>
+
+<h3>Regulatory Risk</h3>
+<ul>
+    <li>Evolving regulatory landscape across jurisdictions</li>
+    <li>Differences between countries in treatment of tokens and DAOs</li>
+    <li>Responsibility for legal compliance lies with individual participants</li>
+</ul>
+
+<h3>Technical Risk</h3>
+<ul>
+    <li>Smart contract bugs or protocol-level issues in Meteora, Metaplex, wallets, DEXs or bridging infrastructure</li>
+    <li>Risks inherent in self-custody, including wallet misconfiguration or phishing</li>
+</ul>
+
+<h3>Reputational / Governance Risk</h3>
+<ul>
+    <li>Misinterpretation of treasury actions (e.g. charity conversions) as "team dumps"</li>
+    <li>Community disagreements on priorities (e.g. size and timing of donations)</li>
+    <li>Dependence on the responsible behaviour of multisig signers and governance participants</li>
+</ul>
+
+<h2>11.3. Mitigation Strategies</h2>
+
+<ul>
+    <li>Careful curve design to avoid extreme early concentration of supply</li>
+    <li>No presale and no VC allocation to reduce centralisation</li>
+    <li>Transparent publication of all multisig addresses and key policies</li>
+    <li>Periodic reporting and dashboards for treasury and charity movements</li>
+    <li>Seeking external review and audits for custom on-chain programmes as they are introduced</li>
+    <li>Continuous education for the community on risks, self-custody and security best practices</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h1 id="legal">12. Legal Disclaimers</h1>
+
+<h2>12.1. Not Financial Advice</h2>
+
+<p>This document does not constitute financial, investment, legal or tax advice. Each person should independently, and with professional advisers where appropriate, assess risks associated with acquiring or holding GGRD. Nothing in this whitepaper should be interpreted as a recommendation to buy, sell or hold GGRD.</p>
+
+<h2>12.2. High-Risk Investment</h2>
+
+<div class="warning">
+    <p><strong>⚠️ WARNING:</strong> Cryptocurrency investments, especially memecoins, involve a high risk of losing the entire invested amount. Past performance, including performance of other tokens or markets, does not guarantee future results. Only invest what you can afford to lose entirely.</p>
+</div>
+
+<h2>12.3. No Guarantees</h2>
+
+<p>There are no guarantees regarding price, liquidity, exchange listings, future utility, revenues, profits or overall project success. Participation in GGRD is entirely voluntary and at the participant's own risk.</p>
+
+<h2>12.4. Token Nature</h2>
+
+<p>GGRD is <strong>not</strong> a share, bond or other equity instrument in any legal entity. Holding GGRD does <strong>not</strong> grant:</p>
+
+<ul>
+    <li>Ownership rights in any company</li>
+    <li>Rights to dividends or profit-sharing</li>
+    <li>Enforceable governance rights outside of the protocol-level mechanisms described herein</li>
+</ul>
+
+<h2>12.5. Regulatory Risk</h2>
+
+<p>The legal status of tokens and DAOs varies by jurisdiction and may change over time. Participants are solely responsible for determining whether acquiring, holding or using GGRD is legal in their jurisdiction and for complying with any applicable laws, including tax obligations.</p>
+
+<h2>12.6. Smart Contract Risk</h2>
+
+<p>Even widely used and audited smart contracts may contain undiscovered vulnerabilities. All on-chain interactions carry inherent technical risk. Users should always verify contract addresses, use trusted wallets and keep software up to date.</p>
+
+<h2>12.7. No Refunds</h2>
+
+<p>On-chain transactions are typically irreversible. The project does not offer refunds, chargebacks or guaranteed buybacks. All transactions in GGRD and related assets are final.</p>
+
+<h2>12.8. Restricted Jurisdictions</h2>
+
+<p>Participation may be restricted or prohibited for residents of certain countries (including but not limited to the USA and jurisdictions subject to international sanctions). The project does not specifically target or solicit participants from such jurisdictions. Participants are responsible for ensuring that they are not violating local laws by engaging with the project.</p>
+
+<h2>12.9. Charity Component Disclaimer</h2>
+
+<p>While 10% of total supply is allocated to the Charity Treasury and there is a clear intention to support Ukrainian children and families affected by war, <strong>no specific donation volume, frequency or outcome is guaranteed</strong>. Actual donations will depend on market conditions, governance decisions and operational feasibility. The project commits to transparency and reporting but cannot guarantee any particular charitable impact beyond the donations that are effectively executed on-chain.</p>
+
+<h2>12.10. Governance and DAO Disclaimer</h2>
+
+<p>Any future DAO or on-chain governance mechanisms are protocol-level tools only. Participation in governance:</p>
+
+<ul>
+    <li>Does not create legal shareholder rights</li>
+    <li>Does not guarantee that all governance outcomes will be implemented</li>
+    <li>Does not grant enforceable claims to project assets or treasuries outside of protocol logic</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h1 id="contact">13. Contact & Support</h1>
+
+<h2>13.1. Official Communication Channels</h2>
+
+<table>
+    <tr>
+        <th>Channel</th>
+        <th>URL</th>
+    </tr>
+    <tr>
+        <td>Website</td>
+        <td>https://ggrd.me</td>
+    </tr>
+    <tr>
+        <td>X (Twitter)</td>
+        <td>https://x.com/ContactGiggle</td>
+    </tr>
+    <tr>
+        <td>Telegram Announcement Channel</td>
+        <td>https://t.me/GGRDofficial</td>
+    </tr>
+    <tr>
+        <td>Telegram Community Chat</td>
+        <td>https://t.me/GGRDchat</td>
+    </tr>
+</table>
+
+<p>All critical information (including contract addresses, DBC and LP links, and charity reports) will be first or simultaneously published on <strong>https://ggrd.me</strong> and in <strong>@GGRDofficial</strong>.</p>
+
+<h2>13.2. Support Policy</h2>
+
+<ul>
+    <li>The project does <strong>not</strong> operate any official support email address</li>
+    <li>Direct contact with the team and moderators takes place <strong>only</strong> via the official Telegram community chat <strong>@GGRDchat</strong></li>
+    <li>Team members will never ask for private keys, seed phrases or direct transfers in DMs. Any such requests are scams</li>
+</ul>
+
+<h2>13.3. Explorers & Tools</h2>
+
+<p>For independent verification, users are encouraged to use:</p>
+
+<table>
+    <tr>
+        <th>Tool</th>
+        <th>URL</th>
+    </tr>
+    <tr>
+        <td>Solscan</td>
+        <td>https://solscan.io</td>
+    </tr>
+    <tr>
+        <td>Solana Explorer</td>
+        <td>https://explorer.solana.com</td>
+    </tr>
+    <tr>
+        <td>SolanaFM</td>
+        <td>https://solana.fm</td>
+    </tr>
+    <tr>
+        <td>Meteora</td>
+        <td>https://app.meteora.ag</td>
+    </tr>
+    <tr>
+        <td>Jupiter</td>
+        <td>https://jup.ag</td>
+    </tr>
+    <tr>
+        <td>DEXScreener</td>
+        <td>https://dexscreener.com</td>
+    </tr>
+    <tr>
+        <td>Birdeye</td>
+        <td>https://birdeye.so</td>
+    </tr>
+    <tr>
+        <td>Squads Dashboard</td>
+        <td>https://app.squads.so</td>
+    </tr>
+</table>
+
+<p>Token, pool and treasury addresses should always be cross-checked between these tools and the official communication channels.</p>
+
+<div class="page-break"></div>
+
+<h1 id="summary">14. Summary</h1>
+
+<p><strong>Giggle Reloaded ($GGRD)</strong> is designed as:</p>
+
+<ul>
+    <li>A fair-launch Solana memecoin with a fixed supply of 1,000,000 tokens</li>
+    <li>A transparently structured token with a 40/60 split between public DBC allocation and multisig-controlled treasuries</li>
+    <li>A project with a clear humanitarian focus, allocating 10% of total supply to a Charity Treasury dedicated to Ukrainian children with cancer and families affected by war</li>
+    <li>A security-conscious deployment using Meteora DBC + DAMM v2, Metaplex Token Metadata and Squads multisigs</li>
+    <li>A future-ready ecosystem that plans to involve the community through DAO-style governance and structured incentive programmes</li>
+</ul>
+
+<p>The project explicitly acknowledges the high-risk nature of memecoins and does not promise profits, listings or outcomes. Instead, it focuses on:</p>
+
+<ul>
+    <li>Transparent mechanics</li>
+    <li>Clearly defined charity commitments at the tokenomics level</li>
+    <li>Strong multisig-based treasury controls</li>
+    <li>A roadmap towards community-driven decision-making</li>
+</ul>
+
+<div style="text-align: center; margin: 2cm 0; padding: 1cm; background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); border: 3px solid #9DFF00; border-radius: 10px;">
+    <p style="font-size: 18pt; font-weight: 700; color: #000000; margin-bottom: 0.5cm;">🏹 From the people, for the people 💚</p>
+    <p style="font-size: 14pt; font-weight: 600; color: #666666;">Let's make GGRD legendary — with transparency, memes and verifiable impact.</p>
+</div>
+
+<div class="footer">
+    <p><strong>Document Control</strong></p>
+    <p>Version: 1.1 | Last Updated: November 15, 2025 | Next Review: [Post-Deployment]</p>
+    <p>Latest Version: https://ggrd.me/whitepaper</p>
+    <p style="margin-top: 0.5cm;">For questions or clarifications, please refer to the official channels listed in Section 13.</p>
+</div>
+
+</div>
+
+</body>
+</html>
